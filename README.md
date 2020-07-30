@@ -13,87 +13,84 @@ Based on those problems, I decided to build a recommendation based on:
 3. Preferences from many users
 
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Here are some packages needed in addition to default python packages. Please install at your own risk.
 
+wordcloud package for visualization of the text:
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+conda install -c conda-forge wordcloud
 ```
 
-And repeat
-
+scikit-learn as machine learning tools:
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+pip install -U scikit-learn
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+NLTK package for NLP process:
 ```
-Give an example
+pip install --user -U nltk
 ```
 
-## Deployment
+Textblob package for sentiment analysis:
+```
+conda install -c conda-forge textblob
+```
 
-Add additional notes about how to deploy this on a live system
+Surprise library for collaborative modeling:
+```
+conda install -c conda-forge scikit-surprise
+```
 
-## Built With
+## Data Description
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+The datasets are from insideairbnb.com. They are categorized by city and I used data from Vancouver. There are 4 datasets in the folder as initial data source, but it ended up with 2 datasets for this project:
+- listings.csv : This file contains all information about the listings in Vancouver, such as the name, description, summary, price, accommodation, etc.
+- reviews.csv : This dataset represents the review for each listing from different users. It has listing id, user id, some other columns, and most importantly, content of the review.
 
-## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+## Method Used for Recommender System
 
-## Versioning
+- Content-based filtering : to tackle the first 2 problems, recommendation from user query and content similarity
+- Collaborative filtering : to solve the third issue, recommendation from preferences by other similar users
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
-## Authors
+## Directory and File Information
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+`data` folder : store all raw datasets from insideairbnb.com
+`download` folder : store all files that were downloaded from the notebooks, for instance: pkl files and processed csv files 
+`1_Introduction_and_Content_Based.ipynb` :  First notebook, data analysis and first recommender algorithm (Content-Based)
+`2_Collaborative.ipynb` : Second notebook, collaborative filtering method #####without##### modeling
+`3_Collaborative_with_Modelling` : Third notebook, collaborative filtering #####with##### modeling using Surprise library
+`Listing_content_packed_bubbles.twb` : Tableau workbook for listings content word visualization
+`airbender.py` : Python file for the streamlit apps
+`report.pdf` : Complete report of the project
+`vancouver.jpeg` : Image for the Streamlit apps homepage
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+## How to Run the Streamlit Apps
 
-## License
+It is suggested to use a new Python environment for the Streamlit app (for instance: mystream).
+```
+conda create --name mystream python
+```
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Install all the basic packages, such as numpy, pandas, scikit-learn.
 
-## Acknowledgments
+Install the Streamlit in this environment.
+```
+pip install streamlit
+```
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Install streamlit-folium and folium for maps.
+```
+conda install -c conda-forge folium
+pip install streamlit-folium
+```
+
+Run the Python file in this environment. Make sure the terminal is in the correct folder of the file.
+```
+streamlit run airbender.py
+```
+
+
 
