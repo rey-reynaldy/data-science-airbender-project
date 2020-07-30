@@ -13,9 +13,11 @@ Based on those problems, I decided to build a recommendation based on:
 3. Preferences from many users
 
 
-### Prerequisites
+
+## Prerequisites
 
 Here are some packages needed in addition to default python packages. Please install at your own risk.
+
 
 wordcloud package for visualization of the text:
 ```
@@ -42,11 +44,14 @@ Surprise library for collaborative modeling:
 conda install -c conda-forge scikit-surprise
 ```
 
+
+
 ## Data Description
 
 The datasets are from insideairbnb.com. They are categorized by city and I used data from Vancouver. There are 4 datasets in the folder as initial data source, but it ended up with 2 datasets for this project:
 - listings.csv : This file contains all information about the listings in Vancouver, such as the name, description, summary, price, accommodation, etc.
 - reviews.csv : This dataset represents the review for each listing from different users. It has listing id, user id, some other columns, and most importantly, content of the review.
+
 
 
 ## Method Used for Recommender System
@@ -55,17 +60,20 @@ The datasets are from insideairbnb.com. They are categorized by city and I used 
 - Collaborative filtering : to solve the third issue, recommendation from preferences by other similar users
 
 
+
 ## Directory and File Information
 
-`data` folder : store all raw datasets from insideairbnb.com
-`download` folder : store all files that were downloaded from the notebooks, for instance: pkl files and processed csv files 
-`1_Introduction_and_Content_Based.ipynb` :  First notebook, data analysis and first recommender algorithm (Content-Based)
-`2_Collaborative.ipynb` : Second notebook, collaborative filtering method #####without##### modeling
-`3_Collaborative_with_Modelling` : Third notebook, collaborative filtering #####with##### modeling using Surprise library
-`Listing_content_packed_bubbles.twb` : Tableau workbook for listings content word visualization
-`airbender.py` : Python file for the streamlit apps
-`report.pdf` : Complete report of the project
-`vancouver.jpeg` : Image for the Streamlit apps homepage
+- `data` folder : store all raw datasets from insideairbnb.com
+- `download` folder : store all files that were downloaded from the notebooks, for instance: pkl files and processed csv files 
+- `1_Introduction_and_Content_Based.ipynb` :  First notebook, data analysis and first recommender algorithm (Content-Based)
+- `2_Collaborative.ipynb` : Second notebook, collaborative filtering method #####without##### modeling
+- `3_Collaborative_with_Modelling` : Third notebook, collaborative filtering #####with##### modeling using Surprise library
+- `Listing_content_packed_bubbles.twb` : Tableau workbook for listings content word visualization
+- `airbender.py` : Python file for the streamlit apps
+- `report.pdf` : Complete report of the project
+- `vancouver.jpeg` : Image for the Streamlit apps homepage
+
+
 
 ## How to Run the Streamlit Apps
 
@@ -92,5 +100,6 @@ Run the Python file in this environment. Make sure the terminal is in the correc
 streamlit run airbender.py
 ```
 
+## END
 
 
